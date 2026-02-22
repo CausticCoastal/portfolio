@@ -222,10 +222,10 @@ p {
   position: fixed;
   inset: -20%;
   background:
-    radial-gradient(at 20% 30%, #ffa883ca 0px, transparent 50%),
-    radial-gradient(at 80% 20%, #cda792 0px, transparent 50%),
-    radial-gradient(at 40% 80%, #ff795b40 0px, transparent 50%),
-    radial-gradient(at 70% 70%, #ffc8a8 0px, transparent 50%);
+    radial-gradient(at 20% 30%, #EEFEE9 0px, transparent 50%),
+    radial-gradient(at 80% 20%, #F2FBCE 0px, transparent 50%),
+    radial-gradient(at 40% 80%, #B0EC7A 0px, transparent 40%),
+    radial-gradient(at 70% 70%, #CCEB89 0px, transparent 50%);
   filter: blur(120px);
   z-index: -1;
   pointer-events: none;
@@ -262,7 +262,7 @@ p {
 * Secret portfolio page */
 
 .portfolio {
-  background: #FEB890;
+  background: #F2FBCE;
   position: relative;
   overflow: hidden;
 }
@@ -272,11 +272,11 @@ p {
   content: "";
   position: fixed;
   inset: -20%;
-  background:
-    radial-gradient(at 20% 30%, #feb890ca 0px, transparent 50%),
-    radial-gradient(at 80% 20%, #cda792 0px, transparent 50%),
-    radial-gradient(at 40% 80%, #ff815b40 0px, transparent 50%),
-    radial-gradient(at 70% 70%, #ffc29f 0px, transparent 50%);
+   background:
+    radial-gradient(at 20% 30%, #EEFEE9 0px, transparent 50%),
+    radial-gradient(at 80% 20%, #F2FBCE 0px, transparent 50%),
+    radial-gradient(at 40% 80%, #B0EC7A 0px, transparent 40%),
+    radial-gradient(at 70% 70%, #CCEB89 0px, transparent 50%);
   filter: blur(120px);
   z-index: -1;
   pointer-events: none;
@@ -665,7 +665,7 @@ e     #+   :
   align-items: center;
   justify-content: center;
   padding: 6px 12px;
-  background-color: #ffffff00;
+  background-color: #D5FF7E;
   border: 1.5px solid #000;
   border-radius: 24px;
   box-shadow: 0 0 4px rgba(0,0,0,0.05);
