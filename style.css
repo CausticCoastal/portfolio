@@ -1056,7 +1056,7 @@ e     #+   :
         grid-template-columns: 1fr;
         gap: 32px;
         padding: 20px;
-        margin: 20px auto;
+        margin: 0px auto;
     }
 }
 
