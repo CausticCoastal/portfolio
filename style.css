@@ -77,6 +77,11 @@ body {
     opacity: 0.8;
 }
 
+::selection {
+  background-color: #ff9054ba; /* The highlight color */
+  color: #ffffff;            /* The selected text color */
+}
+
 /* 🛸 Titles with animated brackets 🛸*/
 
 .scroll-title {
