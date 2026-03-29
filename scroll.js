@@ -7,25 +7,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!hero) return;
 
-  let lastRotation = 0; // for cinematic inertia
+  /* ----------------------
+     Logo rotation — rAF loop for silky smoothness
+  ---------------------- */
+  let currentRotation = 0;
+  let targetRotation = 0;
+
+  if (logo) {
+    // Update target on scroll (cheap — just a number, no DOM write)
+    window.addEventListener('scroll', () => {
+      const maxRotation = 14;
+      targetRotation = Math.min(window.scrollY * 0.03, maxRotation);
+    }, { passive: true });
+
+    // Interpolate and apply in rAF — runs at 60fps regardless of scroll rate
+    const animateLogo = () => {
+      currentRotation += (targetRotation - currentRotation) * 0.06;
+      logo.style.transform = `rotate(${currentRotation}deg)`;
+      requestAnimationFrame(animateLogo);
+    };
+    requestAnimationFrame(animateLogo);
+  }
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
     const screenHeight = window.innerHeight;
-
-    /* ----------------------
-       Logo rotation (cinematic inertia)
-    ---------------------- */
-    if (logo) {
-      const maxRotation = 12;          // degrees, subtle
-      const targetRotation = Math.min(scrollY * 0.03, maxRotation);
-      lastRotation += (targetRotation - lastRotation) * 0.08;
-      logo.style.transform = `rotate(${lastRotation}deg)`;
-    }
-
-    /* ----------------------
-       Lower title fade
-    ---------------------- */
     if (lowerTitle) {
       const heroHeight = hero.offsetHeight || screenHeight;
       const fadeDistance =
@@ -68,13 +74,30 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
     }
 
     /* ----------------------
-       Two-column sections
+       Video Side Info Panels
     ---------------------- */
+    document.querySelectorAll('.video-side-cell').forEach(cell => {
+      const info = cell.querySelector('.video-side-info');
+      if (!info) return;
+
+      const isRight = info.classList.contains('video-side-info--right');
+      const triggerPoint = cell.getBoundingClientRect().top;
+      const inView = triggerPoint < screenHeight * 0.85;
+
+      if (inView && !info.classList.contains('side-info-active')) {
+        const delay = isRight ? 180 : 0; // right side delayed slightly
+        setTimeout(() => {
+          info.classList.add('side-info-active');
+        }, delay);
+      }
+    });
+
+
     sections.forEach(section => {
       const triggerPoint = section.getBoundingClientRect().top;
       section.classList.toggle(
         'scroll-active',
-        triggerPoint < screenHeight * 0.8
+        triggerPoint < screenHeight * 0.92
       );
     });
   };
