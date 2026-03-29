@@ -4,14 +4,6 @@ header {
   padding: 0 8px;
 }
 
-/* affects the availability button
-html, body {
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-}
-*/
-
 .page-wrapper {
   overflow-x: hidden;   /* fixes mobile right gap */
   overflow-y: visible;  /* REQUIRED for sticky */
@@ -49,6 +41,14 @@ section {
   font-display: swap; 
 }
 
+@font-face {
+  font-family: 'Bianzhidai';
+  src: url('/assets/fonts/bianzhidai_COLR-RGB.woff') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+/***BianZhiDai by Xiaoyuan Gao, notyourtypefoundry. Distributed by velvetyne.fr.***/
+
 body {
     font-family: "Avenir", Inter, "Helvetica Neue", Arial, sans-serif;
     font-weight: 500;
@@ -64,13 +64,12 @@ body {
     scroll-snap-type: y mandatory;
 }
 
-.lighter {
+.blue {
   color: rgb(17, 0, 200);
-  filter: blur(0.4px);
 }
 
 .small {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.2;
     font-weight: 300;
     letter-spacing: -0.02em;
@@ -78,8 +77,8 @@ body {
 }
 
 ::selection {
-  background-color: #ff9054ba; /* The highlight color */
-  color: #ffffff;            /* The selected text color */
+  background-color: #ff9054ba;
+  color: #ffffff;           
 }
 
 /* 🛸 Titles with animated brackets 🛸*/
@@ -177,8 +176,8 @@ p {
 }
 
 .highlight:hover::before {
-    opacity: 0.5; /* or whatever fade looks good */
-    filter: blur(3px); /* optional: increase blur on hover for more haze */
+    opacity: 0.5; 
+    filter: blur(3px);
 }
 
 .blur-text {
@@ -192,12 +191,10 @@ p {
     will-change: filter; opacity: 0.95;
 }
 
-
 /* Scroll logo */
-
+ 
 .scroll-logo {
   transform: rotate(0deg);
-  transition: transform 0.3s ease-out;
   will-change: transform;
 }
 
@@ -275,14 +272,14 @@ p {
     max-width: 100%;
     height: 100vh;
     overflow: hidden;
-    scroll-snap-align: start; /* optional: for scroll snapping */
+    scroll-snap-align: start;
     padding: 0 ;
     object-fit: cover;
     background: linear-gradient(to bottom, 
-                #ffffff00 0%,      /* top white */
-                #ffffff00 50%,     /* still white at 50% */
-                #000 50%,     /* bottom starts black */
-                #000 100%);   /* bottom black */
+                #ffffff00 0%,
+                #ffffff00 50%,
+                #000 50%,  
+                #000 100%);
     transition: height 0.4s ease;
 }
 
@@ -299,7 +296,7 @@ p {
 
 .logo-wrap img {
   width: 90%;
-  max-width: 300px; /* cap size */
+  max-width: 300px;
   height: auto;
 }
 
@@ -350,7 +347,6 @@ p {
   transform: scale(1.1);
 }
 
-
 /* Glowing cursor
 +%#  
 @  ##  
@@ -369,6 +365,7 @@ e     #+   :
 " +       =   .#  
            #=x
 */
+
 #cursor {
   position: fixed;
   top: 0;
@@ -539,7 +536,6 @@ e     #+   :
     padding: 0 clamp(10px, 2vw, 20px); /* fluid padding */
 }
 
-
 /* ----------------------
    Two Column Layout
 ---------------------- */
@@ -547,7 +543,7 @@ e     #+   :
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4vw;
-  align-items: start;
+  align-items: center;
   width: 100%;
   max-width: 95%;
   padding: 0px clamp(0px, 2vw, 0px);
@@ -557,11 +553,11 @@ e     #+   :
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  overflow: visible;   /* prevents content from spilling */
-  max-width: 100%;    /* ensures the column never grows past grid */
+  justify-content: center;
+  overflow: visible;
+  max-width: 100%;
   max-height: 100%;
-  box-sizing: border-box; /* includes padding in width */
+  box-sizing: border-box;
 }
 
 /* Left column */
@@ -591,29 +587,43 @@ e     #+   :
 }
 
 .two-column .col > img {
-  width: 100%;       /* fills the column width */
-  height: auto;      /* automatic height, keeps aspect ratio */
-  display: block;    /* remove inline spacing */
-  object-fit: contain;  /* keeps full image visible, no cropping */
-  border-radius: 12px;  /* optional styling */
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 12px;
 }
 
 /* ----------------------
    Scroll Animations
 ---------------------- */
 .two-column h1,
+.two-column h3,
+.two-column .left p,
 .two-column .right {
-  transform: translateY(20px);
+  transform: translateY(28px);
   opacity: 0;
-  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.8s ease-out;
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 1.3s ease-in-out;
+}
+
+.two-column h3 {
+  transition-delay: 0.12s;
+}
+
+.two-column .left p {
+  transition-delay: 0.08s;
 }
 
 .two-column.scroll-active h1,
+.two-column.scroll-active h3,
+.two-column.scroll-active .left p,
 .two-column.scroll-active .right {
   transform: translateY(0);
   opacity: 1;
   margin: 0px;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 1.1s ease-out;
 }
 
 /* ----------------------
@@ -636,7 +646,7 @@ e     #+   :
   align-items: center;
   justify-content: center;
   padding: 6px 12px;
-  background-color: #dafc94;
+  background-color: #ddfaa3;
   border: 1.5px solid #000;
   border-radius: 24px;
   box-shadow: 0 0 4px rgba(0,0,0,0.1);
@@ -714,10 +724,51 @@ e     #+   :
   transform: scale(1.05);
 }
 
-
 /* ----------------------
-   Grid Section
+   Video Side Info Panels
 ---------------------- */
+
+.video-side-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px;
+}
+
+.video-side-info {
+  font-family: 'Bianzhidai', 'Avenir', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: rgba(40, 40, 40, 0.75);
+  text-align: center;
+  max-width: 90%;
+
+  /* Scroll animation initial state */
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.video-side-info--left {
+  transform: translateX(-16px);
+}
+
+.video-side-info--right {
+  transform: translateX(16px);
+}
+
+/* Active (scroll-triggered) state */
+.video-side-info.side-info-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.video-side-info p {
+  margin: 0;
+  color: rgba(40, 40, 40, 0.7);
+  font-size: 13px;
+  line-height: 1.55;
+}
 
 .grid-section {
   position: relative;
@@ -735,7 +786,7 @@ e     #+   :
 .grid {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  grid-template-rows: auto auto auto auto 100px;
+  grid-template-rows: auto;
   gap: 0;
   width: 100%;
   max-width: 100%;
@@ -765,6 +816,12 @@ e     #+   :
     flex-direction: column;   /* stack children vertically */
 }
 
+/* Cells containing two-column sections — let content define height, no overflow clipping */
+.grid-section .cell:has(section.two-column) {
+  align-items: flex-start;
+  overflow: visible;
+  padding: 0;
+}
 
 /* ----------------------
    Grid Cell Fade Borders
@@ -781,9 +838,9 @@ e     #+   :
   border-image-slice: 1;
 }
 
-.grid-section .cell:nth-child(13),
-.grid-section .cell:nth-child(14),
-.grid-section .cell:nth-child(15) {
+.grid-section .cell:nth-child(19),
+.grid-section .cell:nth-child(20),
+.grid-section .cell:nth-child(21) {
   border-top: 0.5px solid transparent;
   border-bottom: none;
   border-image: linear-gradient(
@@ -807,13 +864,13 @@ e     #+   :
 /* Bracketed Label Styles */
 
 .bracket-label {
-  display: block;         /* shrink to text width */
+  display: block;
   text-align: center;
-  font-size: clamp(24px, 5vw, 24px); /* responsive */
+  font-size: clamp(24px, 5vw, 24px);
   font-weight: 600;
   letter-spacing: -0.04em;
   color: rgb(0, 0, 0);
-  margin:1em auto;                 /* space above/below */
+  margin:1em auto;
   position:relative;
   width:fit-content;
 }
@@ -832,7 +889,7 @@ e     #+   :
 
 /* Container */
 .availability-container {
-  position: relative;  /* container for sticky element */
+  position: relative;
 }
 
 .availability-button {
@@ -845,7 +902,7 @@ e     #+   :
   padding: 0px 8px;
   border-radius: 48px;
 	
-  /* Glassy / frosted effect */
+  /* Glassy frosted effect */
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: invert(.1) blur(12px) brightness(1.2) saturate(1.4);
   border: 1px solid rgba(255, 255, 255, 0.7);
@@ -878,7 +935,7 @@ e     #+   :
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 16px; /* bigger than inner circle so pulse is visible */
+  width: 16px;
   height: 16px;
   background-color: rgba(15, 220, 73, 0.45);
   border-radius: 50%;
@@ -1051,7 +1108,18 @@ e     #+   :
     margin: 10px auto;
     width: 100%;
     max-width: 100%;
-  }}
+  }
+
+  /* Keep the 1fr 18fr 1fr columns intact for centring, cells invisible and height-less */
+  .video-side-cell {
+    visibility: hidden;
+    height: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    overflow: hidden;
+  }
+}
 
 /* Mobile collapse */
 @media (max-width: 800px) {
@@ -1061,6 +1129,10 @@ e     #+   :
         padding: 20px;
         margin: 0px auto;
     }
+
+    /* Bio section: video (right col) first, text (left col) second */
+    .two-column--bio .col.left { order: 2; }
+    .two-column--bio .col.right { order: 1; }
 }
 
 @media (max-width: 900px) {
