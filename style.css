@@ -1052,137 +1052,81 @@ e     #+   :
 #####    .   ..    .  "  . ####
 #######  .. ..  .  ...   ###### */
 
-@media (max-width: 900px) {
-    .three-column {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        grid-template-rows: auto auto;
-        grid-template-areas:
-            "left center"
-            "right right"; 
-        gap: 0px;
-        padding: 0px;
-    }
-    .three-column .left {
-        grid-area: left;
-    }
-    .three-column .center {
-        grid-area: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .three-column .center img {
-        max-width: 100%;
-        height: auto;
-    }
-    .three-column .right {
-        grid-area: right;
-        text-align: center;
-    }
-}
-
-@media (max-width: 500px) {
-  .lower-title {
-    display: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .availability-button {
-      position: sticky;
-      top: 18px;
-      left: 20px;
-      z-index: 2;
-  }
-}
-
 @media (max-width: 1200px) {
-    .grid {
-        display: grid;
-        grid-template-columns: 1fr 18fr 1fr;
-        grid-template-rows: auto;
-        width: 100%;              
-        margin: 80px auto 0 auto;
-    }
-
-    .cell {
-        height: auto;
-    }
+  .grid {
+    grid-template-columns: 1fr 18fr 1fr;
+  }
 }
-
+ 
 @media (max-width: 900px) {
+  /* Three-column hero layout */
+  .three-column {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "left center"
+      "right right";
+    gap: 0;
+    padding: 0;
+  }
+  .three-column .left  { grid-area: left; }
+  .three-column .center {
+    grid-area: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .three-column .center img { max-width: 100%; height: auto; }
+  .three-column .right  { grid-area: right; text-align: center; }
+  .three-column .right .intro { white-space: normal; }
+  .tagline { font-size: 16px; }
+ 
+  /* Grid video cells */
   .cell.center iframe {
     border-radius: 15px;
     margin: 10px auto;
     width: 100%;
     max-width: 100%;
   }
-
-  /* Keep the 1fr 18fr 1fr columns intact for centring, cells invisible and height-less */
+ 
+  /* Side info cells — invisible but columns intact for centring */
   .video-side-cell {
     visibility: hidden;
     height: 0 !important;
     min-height: 0 !important;
+    max-height: 0 !important;
     padding: 0 !important;
-    border: none !important;
+    margin: 0 !important;
     overflow: hidden;
+    border-width: 0 !important;
   }
-}
-
-/* Mobile collapse */
-@media (max-width: 800px) {
-    .two-column {
-        grid-template-columns: 1fr;
-        gap: 32px;
-        padding: 20px;
-        margin: 0px auto;
-    }
-
-    /* Bio section: video (right col) first, text (left col) second */
-    .two-column--bio .col.left { order: 2; }
-    .two-column--bio .col.right { order: 1; }
-}
-
-@media (max-width: 900px) {
+ 
+  /* Footer */
   .footer-social {
     text-align: center;
     justify-content: center;
     padding: 24px 0;
     width: 100%;
   }
-}
-
-@media (max-width: 600px) {
-  .site-footer {
-    padding: 0 0px;
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 900px) {
   .footer-logo {
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    width: 90%;        /* override 60% */
+    width: 90%;
     max-width: 100%;
   }
-
   .footer-logo img {
     max-width: 80vw;
     margin: 20px 0;
   }
-}
-
-@media (max-width: 900px) {
+ 
+  /* Full-width video section */
   .video-section {
     height: auto;
     padding: 20px 0;
     scroll-snap-align: none;
-    transition: height 0.4s ease;
   }
-
   .video-section iframe {
     position: relative;
     top: auto;
@@ -1192,4 +1136,34 @@ e     #+   :
     aspect-ratio: 16 / 9;
     display: block;
   }
+}
+ 
+@media (max-width: 800px) {
+  /* Two-column sections stack */
+  .two-column {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 20px;
+    margin: 0 auto;
+  }
+  /* Bio section: video first, text below */
+  .two-column--bio .col.left  { order: 2; }
+  .two-column--bio .col.right { order: 1; }
+}
+ 
+@media (max-width: 600px) {
+  .availability-button {
+    position: sticky;
+    top: 18px;
+    left: 20px;
+    z-index: 2;
+  }
+  .site-footer {
+    padding: 0;
+    max-width: 100%;
+  }
+}
+ 
+@media (max-width: 500px) {
+  .lower-title { display: none; }
 }
