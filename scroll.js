@@ -77,7 +77,7 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
       const triggerPoint = scrollTitle.getBoundingClientRect().top;
       scrollTitle.classList.toggle(
         'active',
-        triggerPoint < screenHeight * 0.85
+        triggerPoint < screenHeight * 0.9
       );
     }
 
