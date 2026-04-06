@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!hero) return;
   
-    /* ----------------------
+ /* ----------------------
      Logo rotation — rAF loop for silky smoothness
   ---------------------- */
   let currentRotation = 0;
@@ -22,9 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollRotationTarget = Math.min(window.scrollY * 0.03, maxRotation);
     }, { passive: true });
  
-    // Hover adds/removes a +45deg offset on top of scroll rotation
-    logo.addEventListener('mouseenter', () => { hoverOffset = 30; });
-    logo.addEventListener('mouseleave', () => { hoverOffset = 0; });
+    // Hover adds/removes offset on top of scroll rotation — desktop only
+    if (window.matchMedia('(pointer: fine)').matches) {
+      logo.addEventListener('mouseenter', () => { hoverOffset = 30; });
+      logo.addEventListener('mouseleave', () => { hoverOffset = 0; });
+    }
  
     // rAF interpolates both independently and combines them
     const animateLogo = () => {
