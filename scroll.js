@@ -6,29 +6,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const logo = document.querySelector('.scroll-logo');
 
   if (!hero) return;
-
-  /* ----------------------
+  
+    /* ----------------------
      Logo rotation — rAF loop for silky smoothness
   ---------------------- */
   let currentRotation = 0;
-  let targetRotation = 0;
-
+  let scrollRotationTarget = 0;  // driven by scroll
+  let hoverOffset = 0;           // driven by hover
+  let currentHoverOffset = 0;   // interpolated separately
+ 
   if (logo) {
-    // Update target on scroll (cheap — just a number, no DOM write)
+    // Scroll updates only the scroll target
     window.addEventListener('scroll', () => {
       const maxRotation = 14;
-      targetRotation = Math.min(window.scrollY * 0.03, maxRotation);
+      scrollRotationTarget = Math.min(window.scrollY * 0.03, maxRotation);
     }, { passive: true });
-
-    // Interpolate and apply in rAF — runs at 60fps regardless of scroll rate
+ 
+    // Hover adds/removes a +45deg offset on top of scroll rotation
+    logo.addEventListener('mouseenter', () => { hoverOffset = 30; });
+    logo.addEventListener('mouseleave', () => { hoverOffset = 0; });
+ 
+    // rAF interpolates both independently and combines them
     const animateLogo = () => {
-      currentRotation += (targetRotation - currentRotation) * 0.06;
-      logo.style.transform = `rotate(${currentRotation}deg)`;
+      currentRotation  += (scrollRotationTarget - currentRotation)  * 0.06;
+      currentHoverOffset += (hoverOffset - currentHoverOffset) * 0.07;
+      logo.style.transform = `rotate(${currentRotation + currentHoverOffset}deg)`;
       requestAnimationFrame(animateLogo);
     };
     requestAnimationFrame(animateLogo);
   }
-
+ 
   const handleScroll = () => {
     const scrollY = window.scrollY;
     const screenHeight = window.innerHeight;
@@ -38,12 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
         window.innerWidth <= 600
           ? heroHeight * 0.6
           : heroHeight * 0.3;
-
+ 
       let opacity = 1 - scrollY / fadeDistance;
       opacity = Math.max(0, Math.min(1, opacity));
       lowerTitle.style.opacity = opacity;
     }
-
+    
     /* ----------------------
        Video Click
     ---------------------- */
@@ -60,7 +67,6 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
     this.appendChild(iframe);
   });
 });
-
 
     /* ----------------------
        Scroll-title brackets
@@ -91,7 +97,6 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
         }, delay);
       }
     });
-
 
     sections.forEach(section => {
       const triggerPoint = section.getBoundingClientRect().top;
