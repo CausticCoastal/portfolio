@@ -200,13 +200,6 @@ p {
     will-change: filter; opacity: 0.95;
 }
 
-/* Scroll logo */
- 
-.scroll-logo {
-  transform: rotate(0deg);
-  will-change: transform;
-}
-
 /* Me ::) */
 
 .me {
@@ -1062,12 +1055,12 @@ e     #+   :
   /* Three-column hero layout */
   .three-column {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     grid-template-rows: auto auto;
     grid-template-areas:
       "left center"
       "right right";
-    gap: 0;
+    gap: 16;
     padding: 0;
   }
   .three-column .left  { grid-area: left; }
@@ -1079,8 +1072,8 @@ e     #+   :
   }
   .three-column .center img { max-width: 100%; height: auto; }
   .three-column .right  { grid-area: right; text-align: center; }
-  .three-column .right .intro { white-space: normal; }
-  .tagline { font-size: 16px; }
+  .three-column .right .intro { white-space:normal; }
+  .tagline {font-size: 18px; }
  
   /* Grid video cells */
   .cell.center iframe {
@@ -1088,6 +1081,15 @@ e     #+   :
     margin: 10px auto;
     width: 100%;
     max-width: 100%;
+  }
+
+   .hero {
+    height: auto;
+    min-height: 95vh;
+  }
+
+  .grid-section {
+    margin-top: 40px;
   }
  
   /* Side info cells — invisible but columns intact for centring */
