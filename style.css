@@ -68,6 +68,15 @@ body {
   color: rgb(17, 0, 200);
 }
 
+.tagline{
+    font-family: "BianZhiDai", "Avenir", Inter, "Helvetica Neue", Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    opacity: 1;
+}
+
 .small {
     font-size: 17px;
     line-height: 1.2;
