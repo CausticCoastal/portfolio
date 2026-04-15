@@ -6,33 +6,52 @@ document.addEventListener('DOMContentLoaded', () => {
   const logo = document.querySelector('.scroll-logo');
 
   if (!hero) return;
-  
- /* ----------------------
+
+/* ----------------------
      Logo rotation — rAF loop for silky smoothness
   ---------------------- */
   let currentRotation = 0;
   let scrollRotationTarget = 0;  // driven by scroll
   let hoverOffset = 0;           // driven by hover
   let currentHoverOffset = 0;   // interpolated separately
+  let tapOffset = 0;             // driven by mobile tap
+  let currentTapOffset = 0;     // interpolated separately
  
   if (logo) {
     // Scroll updates only the scroll target
+    // On mobile, scroll also nudges tapOffset back toward 0 so it fades out naturally
     window.addEventListener('scroll', () => {
-      const maxRotation = 14;
+      const maxRotation = 18;
       scrollRotationTarget = Math.min(window.scrollY * 0.03, maxRotation);
+ 
+      // Pull tap offset back toward zero as user scrolls
+      if (window.matchMedia('(pointer: coarse)').matches) {
+        tapOffset *= 0.92;
+        if (Math.abs(tapOffset) < 0.1) tapOffset = 0;
+      }
     }, { passive: true });
  
-    // Hover adds/removes offset on top of scroll rotation — desktop only
+    // Hover adds/removes random offset — desktop only
     if (window.matchMedia('(pointer: fine)').matches) {
-      logo.addEventListener('mouseenter', () => { hoverOffset = 30; });
+      logo.addEventListener('mouseenter', () => {
+        hoverOffset = (Math.random() * 35 + 5) * (Math.random() < 0.5 ? 1 : -1);
+      });
       logo.addEventListener('mouseleave', () => { hoverOffset = 0; });
     }
  
-    // rAF interpolates both independently and combines them
+    // Tap rotation — mobile only
+    if (window.matchMedia('(pointer: coarse)').matches) {
+      logo.addEventListener('click', () => {
+        tapOffset = (Math.random() * 35 + 5) * (Math.random() < 0.5 ? 1 : -1);
+      });
+    }
+ 
+    // rAF interpolates all independently and combines them
     const animateLogo = () => {
-      currentRotation  += (scrollRotationTarget - currentRotation)  * 0.06;
-      currentHoverOffset += (hoverOffset - currentHoverOffset) * 0.07;
-      logo.style.transform = `rotate(${currentRotation + currentHoverOffset}deg)`;
+      currentRotation    += (scrollRotationTarget - currentRotation)    * 0.06;
+      currentHoverOffset += (hoverOffset - currentHoverOffset)           * 0.07;
+      currentTapOffset   += (tapOffset   - currentTapOffset)             * 0.08;
+      logo.style.transform = `rotate(${currentRotation + currentHoverOffset + currentTapOffset}deg)`;
       requestAnimationFrame(animateLogo);
     };
     requestAnimationFrame(animateLogo);
@@ -52,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       opacity = Math.max(0, Math.min(1, opacity));
       lowerTitle.style.opacity = opacity;
     }
-    
+ 
     /* ----------------------
        Video Click
     ---------------------- */
@@ -69,6 +88,7 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
     this.appendChild(iframe);
   });
 });
+
 
     /* ----------------------
        Scroll-title brackets
@@ -99,6 +119,7 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
         }, delay);
       }
     });
+
 
     sections.forEach(section => {
       const triggerPoint = section.getBoundingClientRect().top;
