@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Scroll updates only the scroll target
     // On mobile, scroll also nudges tapOffset back toward 0 so it fades out naturally
     window.addEventListener('scroll', () => {
-      const maxRotation = 18;
+      const maxRotation = 25;
       scrollRotationTarget = Math.min(window.scrollY * 0.03, maxRotation);
  
       // Pull tap offset back toward zero as user scrolls
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hover adds/removes random offset — desktop only
     if (window.matchMedia('(pointer: fine)').matches) {
       logo.addEventListener('mouseenter', () => {
-        hoverOffset = (Math.random() * 35 + 5) * (Math.random() < 0.5 ? 1 : -1);
+        hoverOffset = (Math.random() * 40 + 5) * (Math.random() < 0.5 ? 1 : -1);
       });
       logo.addEventListener('mouseleave', () => { hoverOffset = 0; });
     }
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tap rotation — mobile only
     if (window.matchMedia('(pointer: coarse)').matches) {
       logo.addEventListener('click', () => {
-        tapOffset = (Math.random() * 35 + 5) * (Math.random() < 0.5 ? 1 : -1);
+        tapOffset = (Math.random() * 40 + 5) * (Math.random() < 0.5 ? 1 : -1);
       });
     }
  
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (lowerTitle) {
       const heroHeight = hero.offsetHeight || screenHeight;
       const fadeDistance =
-        window.innerWidth <= 600
+        window.innerWidth <= 800
           ? heroHeight * 0.6
           : heroHeight * 0.3;
  
@@ -88,7 +88,6 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
     this.appendChild(iframe);
   });
 });
-
 
     /* ----------------------
        Scroll-title brackets
