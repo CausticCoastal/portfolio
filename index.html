@@ -4,31 +4,52 @@
 <head>
 	<meta charset="UTF-8"> 
 	<link rel="stylesheet" href="style.css"> 
-  <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/SplitText.min.js"></script>
+  <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96"/>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
   <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="Caustic Coastal" />
-  <link rel="preload" href="/assets/fonts/BNAxelGroteskBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/bnaxelgrotesk-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" href="/assets/img/Logo experiment 27.12.25 v2.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://player.vimeo.com">
+  <link rel="preconnect" href="https://f.vimeocdn.com">
+  <link rel="preconnect" href="https://fresnel.vimeocdn.com">
+  <link rel="dns-prefetch" href="https://player.vimeo.com">
+  <link rel="dns-prefetch" href="https://f.vimeocdn.com">
 	<meta name="theme-color" content="#ffffff">
-	<meta name="description" content="Dean Casper (aka Caustic Coastal) is a filmmaker, curator and educator based in Lisbon. Making films about making art! •ᴗ•>
+	<meta name="description" content="Dean Casper (aka Caustic Coastal) is a filmmaker, curator and educator based in Lisbon. Making films about making art! •ᴗ•">
   <meta name="ROBOTS" content="INDEX,FOLLOW">
   <meta name="keywords" content="Caustic Coastal, Dean Casper, Dean Brierley, Filmmaker, Curator, Educator, Lisbon, Art Films, Documentary, Gallery, Creative Process, Artists, Exhibitions">
 	<meta property="og:title" content="Caustic Coastal">
+  <meta property="og:image" content="https://causticcoastal.biz/assets/img/video-poster_1.1.1.jpg">
   <meta property="og:description" content="Dean Casper (under the alias Caustic Coastal) is a filmmaker, curator and educator based in Lisbon.">
- 	<meta name="viewport" content="width=device-width, initial-scale=1">   
-	<meta property="og:url" content="www.causticcoastal.biz">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta property="og:url" content="https://www.causticcoastal.biz">
 	<title>Caustic Coastal</title>
+  </head>
 <!---Little intro!--->
 
-<body class="main"> 
-
-<div class="page-wrapper">
-<div class="hero">
+<body> 
+ <!-- Intro Video Cover -->
+<div class="video-intro-container">
+<div class="video-intro">
+  <div class="video-intro" style="background-image: url('assets/img/video-poster_1.1.1.jpg'); background-size: cover; background-position: center;"></div>
+  <iframe
+    class="video-intro__bg"
+    src="https://player.vimeo.com/video/1189030841?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&controls=0"
+    frameborder="0"
+    allow="autoplay; fullscreen"
+    allowfullscreen>
+  </iframe>
+  <div class="scroll-hint">↓</div>
+</div>
+</div> 
 
 <!-- Lower title -->
 
@@ -36,8 +57,13 @@
   CAUSTIC COASTAL
 </div>
 
+<div class="page-wrapper">
+
+<div class="hero">
+
 <div class="page-content">
 <p>
+<br>
 hello, I'm Dean (aka <span class="highlight blur-text">Caustic Coastal</span>), a filmmaker currently based in Lisbon. I make films about making art, documenting artists and creatives doing extraordinary things.
 You can find them over <a class="highlight blur-text" href="https://youtube.com/@causticcoastal" target="_blank">here</a>. Updates and short form things are posted on <a class="highlight blur-text" href="https://www.instagram.com/caustic_coastal/" target="_blank">instagram</a>.
 I also make exhibitions, working with artists to imagine curious or innovative ways of showcasing their work. An archive of curatorial projects is over on 
@@ -60,11 +86,11 @@ New film projects are always warmly welcomed! •ᴗ•
 <section class="three-column">
   
   <div class="col left">
-    <h1>
-    A CREATIVE<br>
-    FILM STUDIO<br>
-    BASED IN LISBON.
-    </h1>
+ <h1>
+  A CREATIVE<br>
+  FILM STUDIO<br>
+  BASED IN <br>LISBON.
+</h1>
   </div>
 
   <div class="col center">
@@ -97,7 +123,7 @@ New film projects are always warmly welcomed! •ᴗ•
     <div class="cell"></div>
     <div class="cell"><h1 class="scroll-title">
     <span class="bracket left">[</span>
-    <span class="title-text">RECENT PROJECTS</span>
+    <span class="title-text">SOME RECENT PROJECTS</span>
     <span class="bracket right">]</span>
   </h1></div>
     <div class="cell"></div>
@@ -223,7 +249,7 @@ New film projects are always warmly welcomed! •ᴗ•
  
 <section class="two-column two-column--bio">
   
-  <div class="col left small">
+  <div class="col left small"> 
   <p>
   I have been working with creatives of all types for over a decade, imagining ways to showcase what they do. <br> 
   <br> What began as a need to document the artistic projects I was making, grew into a fascination for <span class="smallbold">exploring the processes and ideas surrounding the way artists make work.</span><br> 
@@ -250,8 +276,8 @@ New film projects are always warmly welcomed! •ᴗ•
 <!-- Video Section -->
 <div class="video-section">
   <iframe
-    src="https://www.youtube.com/embed/mhQGB7KHzqU?autoplay=1&mute=1&loop=1&playlist=mhQGB7KHzqU"
-    title="YouTube video player"
+    class="video-intro__bg"
+    src="https://player.vimeo.com/video/1189761634?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&controls=0"
     frameborder="0"
     allow="autoplay; fullscreen"
     allowfullscreen>
@@ -273,10 +299,15 @@ New film projects are always warmly welcomed! •ᴗ•
 <div class="lower-bloom"></div>
 <div class="lower-blur"></div>
 <script src="scroll.js"></script>
+<script src="gsap.js"></script>
 
 <!-- Cursor -->
 <script src="cursor.js"></script>
 
-</div>
+<a href="mailto:hello@causticcoastal.biz" class="contact-orb">
+  <img src="assets/img/logos/email icon.png" alt="Contact" width="28" height="28">
+</a>
+
+</div> <!-- /.page-wrapper -->
 </body>
 </html>
