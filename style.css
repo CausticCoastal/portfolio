@@ -1,5 +1,6 @@
 html {
   overscroll-behavior: none;
+  overflow-x: hidden;
 }
 
 header {
@@ -599,28 +600,31 @@ e     #+   :
 
 .three-column {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
     gap: 4vw;
     align-items: center;
     width: 100%;
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 0 clamp(10px, 2vw, 20px);
     min-height: 60vh;
 }
 
-/* Columns */
 .three-column .col {
     position: relative;
+    min-width: 0;
 }
 
-/* Left text */
+/* LEFT */
 .three-column .left h1 {
     font-size: clamp(60px, 5vw, 90px);
     line-height: 0.8;
     letter-spacing: -0.05em;
     font-weight: bold;
-    filter: brightness(1.2) blur(0vw);
+    filter: brightness(1.2);
 }
 
-/* Center placeholder */
+/* CENTER */
 .three-column .center {
     min-height: 300px;
     display: flex;
@@ -631,10 +635,9 @@ e     #+   :
 .three-column .center img {
     width: clamp(120px, 20vw, 300px);
     height: auto;
-    position: center;
 }
 
-/* Right text */
+/* RIGHT */
 .three-column .right {
     text-align: right;
 }
@@ -654,12 +657,6 @@ e     #+   :
     font-weight: 300;
     letter-spacing: -0.02em;
     opacity: 0.8;
-}
-
-.three-column {
-    max-width: 95%;
-    margin: 0 auto;
-    padding: 0 clamp(10px, 2vw, 20px); /* fluid padding */
 }
 
 /* ----------------------
