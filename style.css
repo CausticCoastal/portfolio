@@ -586,7 +586,7 @@ e     #+   :
   width: 40px;
   height: auto;
   backdrop-filter: blur(.6px);
-  z-index: 1000;
+  z-index: 999;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   transform: rotate(0deg);
 }
@@ -595,7 +595,7 @@ e     #+   :
   position: fixed;
   top: 20px;
   left: 20px;
-  z-index: 99999;
+  z-index: 999;
 }
 
 .home-logo:hover {
@@ -1224,7 +1224,7 @@ e     #+   :
   width: 260px;
   opacity: 0;
   pointer-events: none;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .work-preview img {
@@ -1293,7 +1293,7 @@ e     #+   :
     background: #000000;
     box-sizing: border-box;
     padding: 0 16px;
-    z-index: 200;
+    z-index: 1000;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
                 padding 0.3s cubic-bezier(0.16, 1, 0.3, 1);
