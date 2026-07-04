@@ -58,7 +58,10 @@ if (window.matchMedia("(pointer: fine)").matches) {
   });
 
   function animate() {
-    if (!mouseX || !mouseY) return;
+    if (mouseX === undefined || mouseY === undefined) {
+      requestAnimationFrame(animate);
+      return;
+    }
 
     // cursor physics
     positions[0].x += (mouseX - positions[0].x) * 0.25;
@@ -147,4 +150,14 @@ if (window.matchMedia("(pointer: fine)").matches) {
     });
 
   });
+
+  function hidePreview() {
+    if (preview) preview.style.opacity = 0;
+  }
+
+  document.addEventListener('mouseout', (e) => {
+    if (!e.relatedTarget && !e.toElement) hidePreview();
+  });
+
+  window.addEventListener('blur', hidePreview);
 }
