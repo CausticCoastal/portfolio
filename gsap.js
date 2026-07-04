@@ -69,5 +69,6 @@ const orb = document.querySelector(".contact-orb");
     } else {
       orb.classList.remove('is-visible');
     }
-  }, { passive: true });
+  }, { passive: true });  
+  
 });
